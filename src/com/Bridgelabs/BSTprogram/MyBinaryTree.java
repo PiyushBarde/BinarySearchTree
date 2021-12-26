@@ -2,6 +2,33 @@ package com.Bridgelabs.BSTprogram;
 
 public class MyBinaryTree<K extends Comparable<K>> {
     private MyBinaryNode<K> root;
+    public void searchBST(K value) {
+        int counter = 0;
+        MyBinaryNode<K> temp=root;
+        if(temp != null) {
+            while(temp.key.compareTo(value) < 0) {
+                System.out.println(temp.key);
+                temp = temp.right;
+            }
+            if(root.key == value)
+                counter++;
+            while(temp.key.compareTo(value) > 0) {
+                temp = temp.left;
+            }
+            if(temp.key == value) {
+                counter++;
+            }
+            if(counter > 0) {
+                System.out.println(true);
+                System.out.println("Element is present");
+            }
+            else {
+                System.out.println(false);
+                System.out.println("Element is not present");
+            }
+        }
+
+    }
 
     public void add(K key){
         this.root = this.addRecursively(root,key);
